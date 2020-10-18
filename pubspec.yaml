@@ -1,6 +1,6 @@
 name: tstore_dart
 description: A dart library that helps you to store objects.
-version: 0.1.0
+version: 0.1.1
 author: Tyrcord, Inc.
 homepage: https://github.com/tyrcord/tstore_dart
 issue_tracker: https://github.com/tyrcord/tstore_dart/issues
