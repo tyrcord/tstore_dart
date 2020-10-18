@@ -6,17 +6,17 @@ homepage: https://github.com/tyrcord/tstore_dart
 issue_tracker: https://github.com/tyrcord/tstore_dart/issues
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  sdk: ">=2.10.0 <3.0.0"
+  flutter: ">=1.22.0 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  hive: ^1.4.4
+  hive: ^1.4.4+1
   hive_flutter: ^0.3.1
   rxdart: ^0.24.1
-  meta: ^1.1.8
+  meta: ^1.2.3
 
 dev_dependencies:
-  hive_generator: ^0.7.1
-  build_runner: ^1.10.0
+  hive_generator: ^0.8.1
+  build_runner: ^1.10.3
