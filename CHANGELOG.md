@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.2](https://github.com/tyrcord/tstore_dart/releases/tag/0.1.2) (2020-12-07)
+
+### Fixes
+
+- Minor improvements.
+
 ## [0.1.1](https://github.com/tyrcord/tstore_dart/releases/tag/0.1.1) (2020-10-18)
 
 ### Fixes
