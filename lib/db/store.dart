@@ -64,7 +64,7 @@ class Store {
 
   Future<List<V>> list<V>() async {
     final map = await toMap<V>();
-    return map.values.toList();
+    return map?.values?.toList() ?? [];
   }
 
   Future<Iterable<dynamic>> find(bool Function(dynamic) finder) async {
