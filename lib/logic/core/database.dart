@@ -4,14 +4,14 @@ import 'package:hive/hive.dart';
 import 'package:tstore_dart/tstore_dart.dart';
 
 class DataBase {
-  static final DataBase _singleton = DataBase._internal();
+  static final DataBase _singleton = DataBase._();
 
+  final Map<String, Store> _stores = {};
   bool _isInitialized = false;
-  Map<String, Store> _stores = Map<String, Store>();
 
   factory DataBase() => _singleton;
 
-  DataBase._internal();
+  DataBase._();
 
   Future<Store> getStore<E>(String name) async {
     await _init();
