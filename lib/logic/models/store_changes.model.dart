@@ -8,7 +8,7 @@ class TStoreChanges extends TModel {
   final dynamic value;
   final String key;
 
-  TStoreChanges({
+  const TStoreChanges({
     @required this.type,
     this.value,
     this.key,

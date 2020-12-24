@@ -6,7 +6,7 @@ class TDocumentChanges extends TModel {
   final Map<String, dynamic> entryToUpdate;
   final Iterable<String> keyToDelete;
 
-  TDocumentChanges({
+  const TDocumentChanges({
     @required this.entryToUpdate,
     @required this.keyToDelete,
   })  : assert(entryToUpdate != null),
