@@ -2,17 +2,18 @@ import 'package:meta/meta.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
-abstract class DataProvider {
+abstract class TDataProvider {
   @protected
-  final DataBase database = DataBase();
+  final TDataBaseCore database = TFlutterDataBase();
   @protected
   final String storeName;
   @protected
-  Store store;
+  TStore store;
 
-  Stream<StoreChanges> get onChanges => store?.onChanges;
+  Stream<TStoreChanges> get onChanges => store?.onChanges;
 
-  DataProvider({@required this.storeName}) : assert(storeName != null);
+  @mustCallSuper
+  TDataProvider({@required this.storeName}) : assert(storeName != null);
 
   Future<void> connect() async {
     if (store == null) {

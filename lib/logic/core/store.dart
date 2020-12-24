@@ -5,20 +5,20 @@ import 'package:hive/hive.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
-class Store {
+class TStore {
   static Future<bool> _disconnectingFuture;
   static Future<bool> _connectingFuture;
   static Future<Box> _boxFuture;
 
-  final _changesController = PublishSubject<StoreChanges>();
+  final _changesController = PublishSubject<TStoreChanges>();
   final String key;
   Box<dynamic> _box;
 
-  Stream<StoreChanges> get onChanges => _changesController.stream;
+  Stream<TStoreChanges> get onChanges => _changesController.stream;
 
   int get count => _box.length ?? 0;
 
-  Store(this.key);
+  TStore(this.key);
 
   Future<bool> connect() async {
     if (_box == null && _boxFuture == null) {
@@ -85,14 +85,14 @@ class Store {
       await _box.put(key, value);
 
       _notifyChangesListeners(
-        update ? StoreChangeType.update : StoreChangeType.add,
+        update ? TStoreChangeType.update : TStoreChangeType.add,
         key: key,
         value: value,
       );
     }
   }
 
-  Future<void> persistEntity(String key, Entity entity) async {
+  Future<void> persistEntity(String key, TEntity entity) async {
     return persist(key, entity.toJson());
   }
 
@@ -100,7 +100,7 @@ class Store {
     if (_box != null) {
       await _box.delete(key);
 
-      _notifyChangesListeners(StoreChangeType.delete, key: key);
+      _notifyChangesListeners(TStoreChangeType.delete, key: key);
     }
   }
 
@@ -108,17 +108,19 @@ class Store {
     if (_box != null) {
       await _box.deleteAll(_box.keys);
 
-      _notifyChangesListeners(StoreChangeType.deleteAll);
+      _notifyChangesListeners(TStoreChangeType.deleteAll);
     }
   }
 
   Future<List<V>> list<V>() async {
     final map = await toMap<V>();
+
     return map?.values?.toList() ?? [];
   }
 
   Future<List<dynamic>> find(bool Function(dynamic) finder) async {
     final list = _box?.values?.where(finder) ?? [];
+
     return list.toList();
   }
 
@@ -140,11 +142,11 @@ class Store {
   Stream<BoxEvent> watch({String key}) => _box?.watch(key: key);
 
   void _notifyChangesListeners(
-    StoreChangeType type, {
+    TStoreChangeType type, {
     String key,
     dynamic value,
   }) {
-    _changesController.add(StoreChanges(
+    _changesController.add(TStoreChanges(
       type: type,
       key: key,
       value: value,

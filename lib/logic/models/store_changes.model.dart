@@ -1,21 +1,22 @@
 import 'package:meta/meta.dart';
 
+import 'package:tmodel_dart/tmodel_dart.dart';
 import 'package:tstore_dart/tstore_dart.dart';
 
-class StoreChanges extends Model {
-  final StoreChangeType type;
+class TStoreChanges extends TModel {
+  final TStoreChangeType type;
   final dynamic value;
   final String key;
 
-  StoreChanges({
+  TStoreChanges({
     @required this.type,
     this.value,
     this.key,
   }) : assert(type != null);
 
   @override
-  StoreChanges clone() {
-    return StoreChanges(
+  TStoreChanges clone() {
+    return TStoreChanges(
       value: value,
       type: type,
       key: key,
@@ -23,12 +24,12 @@ class StoreChanges extends Model {
   }
 
   @override
-  StoreChanges copyWith({
-    StoreChangeType type,
+  TStoreChanges copyWith({
+    TStoreChangeType type,
     dynamic value,
     String key,
   }) {
-    return StoreChanges(
+    return TStoreChanges(
       value: value ?? this.value,
       type: type ?? this.type,
       key: key ?? this.key,
@@ -36,7 +37,7 @@ class StoreChanges extends Model {
   }
 
   @override
-  StoreChanges merge({@required StoreChanges model}) {
+  TStoreChanges merge({@required TStoreChanges model}) {
     assert(model != null);
 
     return copyWith(

@@ -2,9 +2,13 @@ import 'package:meta/meta.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
-abstract class DocumentDataProvider extends DataProvider {
-  @protected
-  Future<void> persistDocument(Document document) async {
+abstract class TDocumentDataProvider extends TDataProvider {
+  TDocumentDataProvider({
+    @required String storeName,
+  })  : assert(storeName != null),
+        super(storeName: storeName);
+
+  Future<void> persistDocument(TDocument document) async {
     final oldRaw = await store.toMap();
     final newRaw = document.toJson();
     final changes = _findActualDocumentChanges(oldRaw, newRaw);
@@ -18,7 +22,7 @@ abstract class DocumentDataProvider extends DataProvider {
     }
   }
 
-  DocumentChanges _findActualDocumentChanges(
+  TDocumentChanges _findActualDocumentChanges(
     Map<String, dynamic> oldDocument,
     Map<String, dynamic> newDocument,
   ) {
@@ -41,7 +45,7 @@ abstract class DocumentDataProvider extends DataProvider {
       }
     });
 
-    return DocumentChanges(
+    return TDocumentChanges(
       entryToUpdate: entryToUpdate,
       keyToDelete: keyToDelete,
     );

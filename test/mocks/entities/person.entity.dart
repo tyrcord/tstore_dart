@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
-class PersonEntity extends Entity {
+class PersonEntity extends TEntity {
   final String firstname;
   final String lastname;
   final int age;

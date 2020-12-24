@@ -1,4 +1,4 @@
-enum StoreChangeType {
+enum TStoreChangeType {
   add,
   delete,
   deleteAll,

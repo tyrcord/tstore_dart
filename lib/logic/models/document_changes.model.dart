@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
 
-import 'package:tstore_dart/tstore_dart.dart';
+import 'package:tmodel_dart/tmodel_dart.dart';
 
-class DocumentChanges extends Model {
+class TDocumentChanges extends TModel {
   final Map<String, dynamic> entryToUpdate;
   final Iterable<String> keyToDelete;
 
-  DocumentChanges({
+  TDocumentChanges({
     @required this.entryToUpdate,
     @required this.keyToDelete,
   })  : assert(entryToUpdate != null),
         assert(keyToDelete != null);
 
   @override
-  DocumentChanges clone() {
-    return DocumentChanges(
+  TDocumentChanges clone() {
+    return TDocumentChanges(
       entryToUpdate: entryToUpdate,
       keyToDelete: keyToDelete,
     );
   }
 
   @override
-  DocumentChanges copyWith({
+  TDocumentChanges copyWith({
     Map<String, dynamic> entryToUpdate,
     Iterable<String> keyToDelete,
   }) {
-    return DocumentChanges(
+    return TDocumentChanges(
       entryToUpdate: entryToUpdate ?? this.entryToUpdate,
       keyToDelete: keyToDelete ?? this.keyToDelete,
     );
   }
 
   @override
-  DocumentChanges merge({@required DocumentChanges model}) {
+  TDocumentChanges merge({@required TDocumentChanges model}) {
     assert(model != null);
 
     return copyWith(

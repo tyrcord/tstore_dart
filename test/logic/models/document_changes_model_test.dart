@@ -4,18 +4,18 @@ import 'package:tstore_dart/tstore_dart.dart';
 
 void main() {
   group('ModelChanges', () {
-    DocumentChanges modelChanges;
-    DocumentChanges modelChanges2;
+    TDocumentChanges modelChanges;
+    TDocumentChanges modelChanges2;
 
     setUp(() {
-      modelChanges = DocumentChanges(
+      modelChanges = TDocumentChanges(
         keyToDelete: ['age'],
         entryToUpdate: {
           'firstname': 'foo',
           'lastname': 'bar',
         },
       );
-      modelChanges2 = DocumentChanges(
+      modelChanges2 = TDocumentChanges(
         keyToDelete: ['firstname'],
         entryToUpdate: {'age': 42},
       );

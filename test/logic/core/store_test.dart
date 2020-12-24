@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
-import '../../mocks/entities/person_entity.dart';
+import '../../mocks/entities/person.entity.dart';
 
 void main() {
   var path = Directory.current.path;
@@ -13,10 +13,10 @@ void main() {
 
   group('Store', () {
     PersonEntity person;
-    Store store;
+    TStore store;
 
     setUp(() {
-      store = Store('persons');
+      store = TStore('persons');
       person = PersonEntity(
         firstname: 'foo',
         lastname: 'bar',
@@ -188,6 +188,7 @@ void main() {
             var personEntity = PersonEntity.fromJson(Map<String, dynamic>.from(
               item as Map<dynamic, dynamic>,
             ));
+
             return personEntity.age == 42;
           });
 
@@ -200,6 +201,7 @@ void main() {
             var personEntity = PersonEntity.fromJson(Map<String, dynamic>.from(
               item as Map<dynamic, dynamic>,
             ));
+
             return personEntity.age == 42;
           });
 
@@ -227,6 +229,7 @@ void main() {
 
           var candidates = await store.findEntity((item) {
             var personEntity = PersonEntity.fromJson(item);
+
             return personEntity.age == 42;
           });
 
@@ -237,6 +240,7 @@ void main() {
 
           candidates = await store.findEntity((item) {
             var personEntity = PersonEntity.fromJson(item);
+
             return personEntity.age == 42;
           });
 

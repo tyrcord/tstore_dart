@@ -1,5 +1,6 @@
 import 'package:tstore_dart/tstore_dart.dart';
 
-abstract class Entity extends Model {
+abstract class TDocument extends TEntity {
+  @override
   Map<String, dynamic> toJson();
 }
