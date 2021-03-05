@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/tyrcord/tstore_dart/releases/tag/0.3.0) (2021-03-05)
+
+### Enhancements
+
+- Supports sound null safety.
+
 ## [0.2.1](https://github.com/tyrcord/tstore_dart/releases/tag/0.2.1) (2020-12-24)
 
 ### Fixes
