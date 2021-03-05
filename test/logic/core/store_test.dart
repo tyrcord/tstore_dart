@@ -9,11 +9,11 @@ import '../../mocks/entities/person.entity.dart';
 
 void main() {
   var path = Directory.current.path;
-  Hive..init(path);
+  Hive.init(path);
 
   group('Store', () {
-    PersonEntity person;
-    TStore store;
+    late PersonEntity person;
+    late TStore store;
 
     setUp(() {
       store = TStore('persons');
@@ -60,7 +60,7 @@ void main() {
 
         await store.persist('1', person.toJson());
         var json = await store.retrieveEntity('1');
-        expect(person, equals(PersonEntity.fromJson(json)));
+        expect(person, equals(PersonEntity.fromJson(json!)));
       });
 
       test('should update a persisted entry', () async {
@@ -70,7 +70,7 @@ void main() {
         await store.persist('1', person.toJson());
         await store.persist('1', person.copyWith(age: 100).toJson());
         var json = await store.retrieveEntity('1');
-        expect(PersonEntity.fromJson(json).age, equals(100));
+        expect(PersonEntity.fromJson(json!).age, equals(100));
       });
     });
 
@@ -81,7 +81,7 @@ void main() {
 
         await store.persistEntity('1', person);
         var json = await store.retrieveEntity('1');
-        expect(person, equals(PersonEntity.fromJson(json)));
+        expect(person, equals(PersonEntity.fromJson(json!)));
       });
 
       test('should update a persisted entity', () async {
@@ -90,7 +90,7 @@ void main() {
         await store.persistEntity('1', person);
         await store.persistEntity('1', person.copyWith(age: 100));
         var json = await store.retrieveEntity('1');
-        expect(PersonEntity.fromJson(json).age, equals(100));
+        expect(PersonEntity.fromJson(json!).age, equals(100));
       });
     });
 
@@ -111,7 +111,7 @@ void main() {
 
         await store.persistEntity('1', person);
         var json = await store.retrieveEntity('1');
-        expect(person, equals(PersonEntity.fromJson(json)));
+        expect(person, equals(PersonEntity.fromJson(json!)));
       });
     });
 
@@ -172,8 +172,8 @@ void main() {
         final map = await store.toMap<Map<String, dynamic>>();
 
         expect(map.length, equals(2));
-        expect(person, equals(PersonEntity.fromJson(map['1'])));
-        expect(person, equals(PersonEntity.fromJson(map['2'])));
+        expect(person, equals(PersonEntity.fromJson(map['1']!)));
+        expect(person, equals(PersonEntity.fromJson(map['2']!)));
       });
     });
 

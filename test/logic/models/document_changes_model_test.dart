@@ -4,8 +4,8 @@ import 'package:tstore_dart/tstore_dart.dart';
 
 void main() {
   group('ModelChanges', () {
-    TDocumentChanges modelChanges;
-    TDocumentChanges modelChanges2;
+    late TDocumentChanges modelChanges;
+    late TDocumentChanges modelChanges2;
 
     setUp(() {
       modelChanges = TDocumentChanges(

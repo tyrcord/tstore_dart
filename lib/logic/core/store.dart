@@ -6,17 +6,17 @@ import 'package:hive/hive.dart';
 import 'package:tstore_dart/tstore_dart.dart';
 
 class TStore {
-  static Future<bool> _disconnectingFuture;
-  static Future<bool> _connectingFuture;
-  static Future<Box> _boxFuture;
+  static Future<bool>? _disconnectingFuture;
+  static Future<bool>? _connectingFuture;
+  static Future<Box>? _boxFuture;
 
   final _changesController = PublishSubject<TStoreChanges>();
   final String key;
-  Box<dynamic> _box;
+  Box<dynamic>? _box;
 
   Stream<TStoreChanges> get onChanges => _changesController.stream;
 
-  int get count => _box.length ?? 0;
+  int get count => _box!.length;
 
   TStore(this.key);
 
@@ -40,10 +40,10 @@ class TStore {
       }
     }
 
-    return _connectingFuture;
+    return _connectingFuture!;
   }
 
-  Future<void> disconnect() async {
+  Future<bool> disconnect() async {
     if (_disconnectingFuture != null) {
       final completer = Completer<bool>();
       _disconnectingFuture = completer.future;
@@ -58,7 +58,7 @@ class TStore {
         }
 
         if (_box != null) {
-          await _box.close();
+          await _box!.close();
         }
 
         completer.complete(true);
@@ -70,19 +70,19 @@ class TStore {
       }
     }
 
-    return _disconnectingFuture;
+    return _disconnectingFuture!;
   }
 
-  Future<dynamic> retrieve(String key) async => _box?.get(key);
+  Future<dynamic> retrieve(String key) async => _box!.get(key);
 
-  Future<Map<String, dynamic>> retrieveEntity(String key) async {
-    return _box?.get(key) as Map<String, dynamic>;
+  Future<Map<String, dynamic>?> retrieveEntity(String key) async {
+    return _box!.get(key) as Map<String, dynamic>?;
   }
 
   Future<void> persist(String key, dynamic value) async {
     if (_box != null) {
-      final update = _box.containsKey(key);
-      await _box.put(key, value);
+      final update = _box!.containsKey(key);
+      await _box!.put(key, value);
 
       _notifyChangesListeners(
         update ? TStoreChangeType.update : TStoreChangeType.add,
@@ -98,7 +98,7 @@ class TStore {
 
   Future<void> delete(String key) async {
     if (_box != null) {
-      await _box.delete(key);
+      await _box!.delete(key);
 
       _notifyChangesListeners(TStoreChangeType.delete, key: key);
     }
@@ -106,7 +106,7 @@ class TStore {
 
   Future<void> clear() async {
     if (_box != null) {
-      await _box.deleteAll(_box.keys);
+      await _box!.deleteAll(_box!.keys);
 
       _notifyChangesListeners(TStoreChangeType.deleteAll);
     }
@@ -115,11 +115,11 @@ class TStore {
   Future<List<V>> list<V>() async {
     final map = await toMap<V>();
 
-    return map?.values?.toList() ?? [];
+    return map.values.toList();
   }
 
   Future<List<dynamic>> find(bool Function(dynamic) finder) async {
-    final list = _box?.values?.where(finder) ?? [];
+    final list = _box!.values.where(finder);
 
     return list.toList();
   }
@@ -127,7 +127,7 @@ class TStore {
   Future<List<Map<String, dynamic>>> findEntity(
     bool Function(Map<String, dynamic>) finder,
   ) async {
-    final values = _box?.values ?? [];
+    final values = _box!.values;
 
     return values
         .map<Map<String, dynamic>>((dynamic value) {
@@ -137,13 +137,13 @@ class TStore {
         .toList();
   }
 
-  Future<Map<String, V>> toMap<V>() async => _box?.toMap()?.cast<String, V>();
+  Future<Map<String, V>> toMap<V>() async => _box!.toMap().cast<String, V>();
 
-  Stream<BoxEvent> watch({String key}) => _box?.watch(key: key);
+  Stream<BoxEvent>? watch({String? key}) => _box!.watch(key: key);
 
   void _notifyChangesListeners(
     TStoreChangeType type, {
-    String key,
+    String? key,
     dynamic value,
   }) {
     _changesController.add(TStoreChanges(

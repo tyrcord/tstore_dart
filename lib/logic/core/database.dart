@@ -17,7 +17,7 @@ class TDataBase extends TDataBaseCore {
   Future<bool> init() async {
     if (!isInitialized) {
       var path = Directory.current.path;
-      Hive..init(path);
+      Hive.init(path);
       isInitialized = true;
     }
 

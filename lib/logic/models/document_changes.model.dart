@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:tmodel_dart/tmodel_dart.dart';
 
 class TDocumentChanges extends TModel {
@@ -7,10 +5,9 @@ class TDocumentChanges extends TModel {
   final Iterable<String> keyToDelete;
 
   const TDocumentChanges({
-    @required this.entryToUpdate,
-    @required this.keyToDelete,
-  })  : assert(entryToUpdate != null),
-        assert(keyToDelete != null);
+    required this.entryToUpdate,
+    required this.keyToDelete,
+  });
 
   @override
   TDocumentChanges clone() {
@@ -22,8 +19,8 @@ class TDocumentChanges extends TModel {
 
   @override
   TDocumentChanges copyWith({
-    Map<String, dynamic> entryToUpdate,
-    Iterable<String> keyToDelete,
+    Map<String, dynamic>? entryToUpdate,
+    Iterable<String>? keyToDelete,
   }) {
     return TDocumentChanges(
       entryToUpdate: entryToUpdate ?? this.entryToUpdate,
@@ -32,11 +29,11 @@ class TDocumentChanges extends TModel {
   }
 
   @override
-  TDocumentChanges merge({@required TDocumentChanges model}) {
+  TDocumentChanges merge({TDocumentChanges? model}) {
     assert(model != null);
 
     return copyWith(
-      entryToUpdate: model.entryToUpdate,
+      entryToUpdate: model!.entryToUpdate,
       keyToDelete: model.keyToDelete,
     );
   }

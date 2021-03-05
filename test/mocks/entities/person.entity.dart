@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:tstore_dart/tstore_dart.dart';
 
 class PersonEntity extends TEntity {
-  final String firstname;
-  final String lastname;
-  final int age;
+  final String? firstname;
+  final String? lastname;
+  final int? age;
 
   PersonEntity({
     this.firstname,
@@ -24,17 +22,17 @@ class PersonEntity extends TEntity {
 
   factory PersonEntity.fromJson(Map<String, dynamic> json) {
     return PersonEntity(
-      firstname: json['firstname'] as String,
-      lastname: json['lastname'] as String,
-      age: json['age'] as int,
+      firstname: json['firstname'] as String?,
+      lastname: json['lastname'] as String?,
+      age: json['age'] as int?,
     );
   }
 
   @override
   PersonEntity copyWith({
-    String firstname,
-    String lastname,
-    int age,
+    String? firstname,
+    String? lastname,
+    int? age,
   }) {
     return PersonEntity(
       firstname: firstname ?? this.firstname,
@@ -44,18 +42,18 @@ class PersonEntity extends TEntity {
   }
 
   @override
-  PersonEntity merge({@required PersonEntity entity}) {
+  PersonEntity merge({PersonEntity? entity}) {
     assert(entity != null);
 
     return copyWith(
-      firstname: entity.firstname,
+      firstname: entity!.firstname,
       lastname: entity.lastname,
       age: entity.age,
     );
   }
 
   @override
-  List<Object> get props => [firstname, lastname, age];
+  List<Object?> get props => [firstname, lastname, age];
 
   @override
   Map<String, dynamic> toJson() {

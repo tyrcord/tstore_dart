@@ -1,24 +1,21 @@
-import 'package:meta/meta.dart';
-
 import 'package:tstore_dart/tstore_dart.dart';
 
 abstract class TDocumentDataProvider extends TDataProvider {
   TDocumentDataProvider({
-    @required String storeName,
-  })  : assert(storeName != null),
-        super(storeName: storeName);
+    required String storeName,
+  }) : super(storeName: storeName);
 
   Future<void> persistDocument(TDocument document) async {
-    final oldRaw = await store.toMap();
+    final oldRaw = await store!.toMap();
     final newRaw = document.toJson();
     final changes = _findActualDocumentChanges(oldRaw, newRaw);
 
     for (var entry in changes.entryToUpdate.entries) {
-      await store.persist(entry.key, entry.value);
+      await store!.persist(entry.key, entry.value);
     }
 
     for (var key in changes.keyToDelete) {
-      await store.delete(key);
+      await store!.delete(key);
     }
   }
 

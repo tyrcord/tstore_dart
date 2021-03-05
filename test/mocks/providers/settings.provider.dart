@@ -7,7 +7,7 @@ import '../entities/settings.entity.dart';
 class SettingsDocumentDataProvider extends TDocumentDataProvider {
   @override
   @protected
-  final database = TDataBase();
+  final TDataBaseCore database = TDataBase();
 
   SettingsDocumentDataProvider() : super(storeName: 'settings');
 
@@ -16,9 +16,9 @@ class SettingsDocumentDataProvider extends TDocumentDataProvider {
   }
 
   Future<SettingsDocument> retrieveSettings() async {
-    final raw = await store.toMap();
+    final raw = await store!.toMap();
 
-    if (raw != null) {
+    if (raw.isNotEmpty) {
       return SettingsDocument.fromJson(raw);
     }
 

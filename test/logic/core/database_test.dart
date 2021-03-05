@@ -1,16 +1,10 @@
-import 'dart:io';
-
 import 'package:test/test.dart';
-import 'package:hive/hive.dart';
 
 import 'package:tstore_dart/tstore_dart.dart';
 
 void main() {
-  var path = Directory.current.path;
-  Hive..init(path);
-
   group('DataBase', () {
-    TDataBase db;
+    late TDataBase db;
 
     setUp(() {
       db = TDataBase();

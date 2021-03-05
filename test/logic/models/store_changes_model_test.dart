@@ -4,8 +4,8 @@ import 'package:tstore_dart/tstore_dart.dart';
 
 void main() {
   group('StoreChanges', () {
-    TStoreChanges storeChanges;
-    TStoreChanges storeChanges2;
+    late TStoreChanges storeChanges;
+    late TStoreChanges storeChanges2;
 
     setUp(() {
       storeChanges = TStoreChanges(type: TStoreChangeType.delete, key: 'age');

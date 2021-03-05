@@ -15,7 +15,7 @@ abstract class TDataBaseCore {
       stores.putIfAbsent(name, () => TStore(name));
     }
 
-    return stores[name];
+    return stores[name]!;
   }
 
   @protected

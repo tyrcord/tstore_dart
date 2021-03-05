@@ -1,18 +1,12 @@
-import 'dart:io';
-
 import 'package:test/test.dart';
-import 'package:hive/hive.dart';
 
 import '../../mocks/entities/settings.entity.dart';
 import '../../mocks/providers/settings.provider.dart';
 
 void main() {
-  var path = Directory.current.path;
-  Hive..init(path);
-
   group('TDocumentDataProvider', () {
-    SettingsDocumentDataProvider provider;
-    SettingsDocument document;
+    late SettingsDocumentDataProvider provider;
+    late SettingsDocument document;
 
     setUp(() {
       provider = SettingsDocumentDataProvider();

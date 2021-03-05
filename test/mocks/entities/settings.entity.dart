@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:tstore_dart/tstore_dart.dart';
 
 class SettingsDocument extends TDocument {
-  final String languageCode;
-  final String theme;
-  final int year;
+  final String? languageCode;
+  final String? theme;
+  final int? year;
 
   SettingsDocument({
     this.languageCode,
@@ -24,17 +22,17 @@ class SettingsDocument extends TDocument {
 
   factory SettingsDocument.fromJson(Map<String, dynamic> json) {
     return SettingsDocument(
-      languageCode: json['languageCode'] as String,
-      theme: json['theme'] as String,
-      year: json['year'] as int,
+      languageCode: json['languageCode'] as String?,
+      theme: json['theme'] as String?,
+      year: json['year'] as int?,
     );
   }
 
   @override
   SettingsDocument copyWith({
-    String languageCode,
-    String theme,
-    int year,
+    String? languageCode,
+    String? theme,
+    int? year,
   }) {
     return SettingsDocument(
       languageCode: languageCode ?? this.languageCode,
@@ -44,18 +42,18 @@ class SettingsDocument extends TDocument {
   }
 
   @override
-  SettingsDocument merge({@required SettingsDocument entity}) {
+  SettingsDocument merge({SettingsDocument? entity}) {
     assert(entity != null);
 
     return copyWith(
-      languageCode: entity.languageCode,
+      languageCode: entity!.languageCode,
       theme: entity.theme,
       year: entity.year,
     );
   }
 
   @override
-  List<Object> get props => [languageCode, theme, year];
+  List<Object?> get props => [languageCode, theme, year];
 
   @override
   Map<String, dynamic> toJson() {

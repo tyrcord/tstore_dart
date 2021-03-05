@@ -8,19 +8,19 @@ abstract class TDataProvider {
   @protected
   final String storeName;
   @protected
-  TStore store;
+  TStore? store;
 
-  Stream<TStoreChanges> get onChanges => store?.onChanges;
+  Stream<TStoreChanges>? get onChanges => store!.onChanges;
 
   @mustCallSuper
-  TDataProvider({@required this.storeName}) : assert(storeName != null);
+  TDataProvider({required this.storeName});
 
   Future<void> connect() async {
     if (store == null) {
       store = await database.getStore(storeName);
-      await store.connect();
+      await store!.connect();
     }
   }
 
-  Future<void> disconnect() async => store?.disconnect();
+  Future<void>? disconnect() async => store!.disconnect();
 }
