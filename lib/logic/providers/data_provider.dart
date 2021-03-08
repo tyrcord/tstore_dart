@@ -10,7 +10,7 @@ abstract class TDataProvider {
   @protected
   TStore? store;
 
-  Stream<TStoreChanges>? get onChanges => store!.onChanges;
+  Stream<TStoreChanges> get onChanges => store!.onChanges;
 
   @mustCallSuper
   TDataProvider({required this.storeName});
