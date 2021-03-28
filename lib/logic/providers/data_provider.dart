@@ -22,5 +22,5 @@ abstract class TDataProvider {
     }
   }
 
-  Future<void>? disconnect() async => store!.disconnect();
+  Future<void>? disconnect() async => store?.disconnect();
 }

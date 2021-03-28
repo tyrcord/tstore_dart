@@ -44,7 +44,7 @@ class TStore {
   }
 
   Future<bool> disconnect() async {
-    if (_disconnectingFuture != null) {
+    if (_disconnectingFuture == null) {
       final completer = Completer<bool>();
       _disconnectingFuture = completer.future;
 
@@ -80,16 +80,14 @@ class TStore {
   }
 
   Future<void> persist(String key, dynamic value) async {
-    if (_box != null) {
-      final update = _box!.containsKey(key);
-      await _box!.put(key, value);
+    final update = _box!.containsKey(key);
+    await _box!.put(key, value);
 
-      _notifyChangesListeners(
-        update ? TStoreChangeType.update : TStoreChangeType.add,
-        key: key,
-        value: value,
-      );
-    }
+    _notifyChangesListeners(
+      update ? TStoreChangeType.update : TStoreChangeType.add,
+      key: key,
+      value: value,
+    );
   }
 
   Future<void> persistEntity(String key, TEntity entity) async {
@@ -97,19 +95,15 @@ class TStore {
   }
 
   Future<void> delete(String key) async {
-    if (_box != null) {
-      await _box!.delete(key);
+    await _box!.delete(key);
 
-      _notifyChangesListeners(TStoreChangeType.delete, key: key);
-    }
+    _notifyChangesListeners(TStoreChangeType.delete, key: key);
   }
 
   Future<void> clear() async {
-    if (_box != null) {
-      await _box!.deleteAll(_box!.keys);
+    await _box!.deleteAll(_box!.keys);
 
-      _notifyChangesListeners(TStoreChangeType.deleteAll);
-    }
+    _notifyChangesListeners(TStoreChangeType.deleteAll);
   }
 
   Future<List<V>> list<V>() async {
