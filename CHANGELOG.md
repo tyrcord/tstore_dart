@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.4](https://github.com/tyrcord/tstore_dart/releases/tag/0.3.4) (2021-05-16)
+
+### Enhancements
+
+- Minor improvements.
+
 ## [0.3.3](https://github.com/tyrcord/tstore_dart/releases/tag/0.3.3) (2021-05-16)
 
 ### Enhancements
