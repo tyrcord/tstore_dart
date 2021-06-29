@@ -16,7 +16,7 @@ class SettingsDocumentDataProvider extends TDocumentDataProvider {
   }
 
   Future<SettingsDocument> retrieveSettings() async {
-    final raw = await store!.toMap();
+    final raw = await store.toMap();
 
     if (raw.isNotEmpty) {
       return SettingsDocument.fromJson(raw);
