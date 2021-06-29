@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/tyrcord/tstore_dart/releases/tag/0.4.0) (2021-06-29)
+
+### Enhancements
+
+- [TDataProvider]: Make `store` property non null.
+
 ## [0.3.5](https://github.com/tyrcord/tstore_dart/releases/tag/0.3.5) (2021-06-28)
 
 ### Enhancements
