@@ -17,8 +17,9 @@ void main() {
       test('should persit a document', () async {
         await provider.connect();
         await provider.persistDocument(document);
-        final document2 = await provider.retrieveSettings();
-        expect(document2, equals(document));
+        final documentRetrieved = await provider.retrieveSettings();
+
+        expect(documentRetrieved, equals(document));
       });
 
       test('should update document', () async {
@@ -27,9 +28,27 @@ void main() {
         await provider.persistDocument(
           SettingsDocument(year: 2020, theme: 'dark'),
         );
+        final documentRetrieved = await provider.retrieveSettings();
 
-        final document2 = await provider.retrieveSettings();
-        expect(document2, equals(SettingsDocument(year: 2020, theme: 'dark')));
+        expect(
+          documentRetrieved,
+          equals(SettingsDocument(year: 2020, theme: 'dark')),
+        );
+      });
+    });
+
+    group('#clearDocument()', () {
+      test('should clear a document', () async {
+        await provider.connect();
+        await provider.persistDocument(document);
+        var documentRetrieved = await provider.retrieveSettings();
+
+        expect(documentRetrieved, equals(document));
+
+        await provider.clearDocument();
+        documentRetrieved = await provider.retrieveSettings();
+
+        expect(documentRetrieved, equals(SettingsDocument()));
       });
     });
   });

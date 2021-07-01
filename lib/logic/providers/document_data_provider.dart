@@ -19,6 +19,8 @@ abstract class TDocumentDataProvider extends TDataProvider {
     }
   }
 
+  Future<void> clearDocument() async => store.clear();
+
   TDocumentChanges _findActualDocumentChanges(
     Map<String, dynamic> oldDocument,
     Map<String, dynamic> newDocument,
