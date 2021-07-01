@@ -1,5 +1,12 @@
 # Changelog
 
+
+## [0.5.0](https://github.com/tyrcord/tstore_dart/releases/tag/0.5.0) (2021-07-01)
+
+### Features
+
+- Added `clearDocument` method.
+
 ## [0.4.0](https://github.com/tyrcord/tstore_dart/releases/tag/0.4.0) (2021-06-29)
 
 ### Enhancements
