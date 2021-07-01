@@ -29,11 +29,9 @@ class TDocumentChanges extends TModel {
   }
 
   @override
-  TDocumentChanges merge({TDocumentChanges? model}) {
-    assert(model != null);
-
+  TDocumentChanges merge(covariant TDocumentChanges model) {
     return copyWith(
-      entryToUpdate: model!.entryToUpdate,
+      entryToUpdate: model.entryToUpdate,
       keyToDelete: model.keyToDelete,
     );
   }

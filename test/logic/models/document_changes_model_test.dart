@@ -49,7 +49,7 @@ void main() {
 
     group('#merge()', () {
       test('should return a merge two ModelChanges objects', () {
-        final copy = modelChanges.merge(model: modelChanges2);
+        final copy = modelChanges.merge(modelChanges2);
 
         expect(modelChanges == copy, equals(false));
         expect(modelChanges2 == copy, equals(true));

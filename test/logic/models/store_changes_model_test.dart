@@ -33,7 +33,7 @@ void main() {
 
     group('#merge()', () {
       test('should return a merge two StoreChanges objects', () {
-        final copy = storeChanges.merge(model: storeChanges2);
+        final copy = storeChanges.merge(storeChanges2);
 
         expect(storeChanges == copy, equals(false));
         expect(copy.type, equals(TStoreChangeType.delete));

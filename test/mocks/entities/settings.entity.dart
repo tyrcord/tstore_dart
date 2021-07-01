@@ -42,13 +42,11 @@ class SettingsDocument extends TDocument {
   }
 
   @override
-  SettingsDocument merge({SettingsDocument? entity}) {
-    assert(entity != null);
-
+  SettingsDocument merge(covariant SettingsDocument document) {
     return copyWith(
-      languageCode: entity!.languageCode,
-      theme: entity.theme,
-      year: entity.year,
+      languageCode: document.languageCode,
+      theme: document.theme,
+      year: document.year,
     );
   }
 

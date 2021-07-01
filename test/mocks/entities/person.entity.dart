@@ -42,11 +42,9 @@ class PersonEntity extends TEntity {
   }
 
   @override
-  PersonEntity merge({PersonEntity? entity}) {
-    assert(entity != null);
-
+  PersonEntity merge(covariant PersonEntity entity) {
     return copyWith(
-      firstname: entity!.firstname,
+      firstname: entity.firstname,
       lastname: entity.lastname,
       age: entity.age,
     );

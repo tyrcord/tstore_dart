@@ -35,11 +35,9 @@ class TStoreChanges extends TModel {
   }
 
   @override
-  TStoreChanges merge({TStoreChanges? model}) {
-    assert(model != null);
-
+  TStoreChanges merge(covariant TStoreChanges model) {
     return copyWith(
-      value: model!.value,
+      value: model.value,
       type: model.type,
       key: model.key,
     );
