@@ -35,7 +35,9 @@ abstract class TDataProvider {
   }
 
   Future<bool> disconnect() async {
-    _isConnected = await store.disconnect();
+    if (_isConnected) {
+      _isConnected = await store.disconnect();
+    }
 
     return _isConnected;
   }
