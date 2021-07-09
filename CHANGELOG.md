@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1](https://github.com/tyrcord/tstore_dart/releases/tag/0.6.1) (2021-07-09)
+
+### Fixes
+
+- Fix a regression.
+
 ## [0.6.0](https://github.com/tyrcord/tstore_dart/releases/tag/0.6.0) (2021-07-01)
 
 ### Breaking Changes
